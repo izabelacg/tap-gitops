@@ -4,5 +4,5 @@ kind: Secret
 metadata:
  name: app-values
 stringData:
- values.yaml: |
+ values.yml: |
    ---
