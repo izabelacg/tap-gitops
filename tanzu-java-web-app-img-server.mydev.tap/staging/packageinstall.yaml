@@ -6,7 +6,7 @@ metadata:
 spec:
  serviceAccountName: default # ServiceAccount on Run cluster with permissions to deploy Package, see "Set up Run Cluster Namespaces"
  packageRef:
-   refName: app.default.tap # name of the Package
+   refName: tanzu-java-web-app-img-server.mydev.tap # name of the Package
    versionSelection:
      constraints: ">= 0.0.0-0"
  values:
