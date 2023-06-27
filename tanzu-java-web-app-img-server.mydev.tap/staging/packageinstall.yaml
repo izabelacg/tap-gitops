@@ -8,7 +8,7 @@ spec:
  packageRef:
    refName: app.default.tap # name of the Package
    versionSelection:
-     constraints: ">=0.0.0"
+     constraints: ">= 0.0.0-0"
  values:
  - secretRef:
      name: app-values # Secret created in previous step
