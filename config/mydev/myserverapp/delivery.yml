@@ -58,7 +58,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: us.gcr.io/daisy-284300/icg-vmware/build-service/workloads/myserverapp-mydev@sha256:1342e5c4ed552a32d39a3969107a83f908c5760204b7a5e92d041efbc7cafa46
+        image: us.gcr.io/daisy-284300/icg-vmware/build-service/workloads/myserverapp-mydev@sha256:7885c937f7e768772f58a95f44922c54ae123deb90509c39e809141e0c67cc17
         livenessProbe:
           httpGet:
             path: /livez
