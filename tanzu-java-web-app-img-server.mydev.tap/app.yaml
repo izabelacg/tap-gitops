@@ -1,0 +1,24 @@
+---
+apiVersion: kappctrl.k14s.io/v1alpha1
+kind: App
+metadata:
+ name: hello-app-app
+ # namespace: mydev
+spec:
+ serviceAccountName: default
+ fetch:
+ - git:
+     url: https://github.com/izabelacg/tap-gitops
+     ref: origin/main
+     subPath: tanzu-java-web-app-img-server.mydev.tap/packages/
+ - git:
+     url: https://github.com/izabelacg/tap-gitops
+     ref: origin/main
+     subPath: tanzu-java-web-app-img-server.mydev.tap/staging/
+ template:
+ - ytt: {}
+
+ deploy:
+ - kapp: {}
+     # intoNs: mydev
+
