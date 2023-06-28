@@ -6,3 +6,4 @@ metadata:
 stringData:
  values.yml: |
    ---
+   workload_name: tanzu-java-web-app-img-server-carvel
