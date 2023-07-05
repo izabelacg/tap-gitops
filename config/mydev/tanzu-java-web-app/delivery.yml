@@ -7,6 +7,7 @@ metadata:
     ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
     kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
   labels:
+    app.kubernetes.io/name: tanzu-java-web-app
     app.kubernetes.io/part-of: tanzu-java-web-app
     apps.tanzu.vmware.com/workload-type: server
     app.kubernetes.io/component: run
@@ -83,6 +84,7 @@ kind: Service
 metadata:
   name: tanzu-java-web-app
   labels:
+    app.kubernetes.io/name: tanzu-java-web-app
     app.kubernetes.io/part-of: tanzu-java-web-app
     apps.tanzu.vmware.com/workload-type: server
     app.kubernetes.io/component: run
