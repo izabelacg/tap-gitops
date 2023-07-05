@@ -16,6 +16,7 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/component: run
+      app.kubernetes.io/name: tanzu-java-web-app
       app.kubernetes.io/part-of: tanzu-java-web-app
       apps.tanzu.vmware.com/auto-configure-actuators: "false"
       apps.tanzu.vmware.com/workload-type: server
@@ -42,8 +43,11 @@ spec:
           spring-boot-convention/app-live-view-connector-boot
           spring-boot-convention/app-live-view-appflavours-boot
         developer.conventions/target-containers: workload
+        kubectl.kubernetes.io/last-applied-configuration: |
+          {"apiVersion":"carto.run/v1alpha1","kind":"Workload","metadata":{"annotations":{},"labels":{"app.kubernetes.io/name":"tanzu-java-web-app","app.kubernetes.io/part-of":"tanzu-java-web-app","apps.tanzu.vmware.com/workload-type":"server"},"name":"tanzu-java-web-app","namespace":"mydev"},"spec":{"source":{"git":{"ref":{"branch":"main"},"url":"https://github.com/izabelacg/application-accelerator-samples"},"subPath":"tanzu-java-web-app"}}}
       labels:
         app.kubernetes.io/component: run
+        app.kubernetes.io/name: tanzu-java-web-app
         app.kubernetes.io/part-of: tanzu-java-web-app
         apps.tanzu.vmware.com/auto-configure-actuators: "false"
         apps.tanzu.vmware.com/workload-type: server
@@ -92,6 +96,7 @@ metadata:
 spec:
   selector:
     app.kubernetes.io/component: run
+    app.kubernetes.io/name: tanzu-java-web-app
     app.kubernetes.io/part-of: tanzu-java-web-app
     apps.tanzu.vmware.com/auto-configure-actuators: "false"
     apps.tanzu.vmware.com/workload-type: server
