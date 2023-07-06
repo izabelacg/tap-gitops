@@ -63,7 +63,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: us.gcr.io/daisy-284300/icg-vmware/build-service/workloads/tanzu-java-web-app-mydev@sha256:3ad0ea30dc938d22536dd4a5e069210987287d5919853bb479dfe5eb44cc09d1
+        image: us.gcr.io/daisy-284300/icg-vmware/build-service/workloads/tanzu-java-web-app-mydev@sha256:84ff260bcfe481e4f8a810863a8b45445a9abd606b742404ca7b714419b348bf
         livenessProbe:
           httpGet:
             path: /livez
