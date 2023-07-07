@@ -1,39 +1,37 @@
 # tap-gitops
 
-## Server workload using Package SupplyChain
+## tanzu-java-web-app-img-server.mydev.tap
 
-### tanzu-java-web-app-img-server.mydev.tap
+Go to [README.md](tanzu-java-web-app-img-server.mydev.tap/README.md)
 
-To deploy the server workload:
+## Canary deployment
 
-```sh
-export WORKLOAD_NAMESPACE=mydev
+Go to [README.md](canary/README.md)
 
-kubectl apply -n $WORKLOAD_NAMESPACE -f tanzu-java-web-app-img-server.mydev.tap/gitops-secret.yaml
+Canary deployment instructions of the workload below:
 
-# server / image to url / package supplychain
-tanzu apps workload create tanzu-java-web-app-img-server \
---app tanzu-java-web-app-img-server \
---type server \
---label apps.tanzu.vmware.com/carvel-package-workflow=true \
---image springcommunity/spring-framework-petclinic \
---param "gitops_ssh_secret=git-ssh" \
---namespace $WORKLOAD_NAMESPACE
-```
+* Workload type: Server
+* Building from source (source to url)
+  * Source: https://github.com/izabelacg/application-accelerator-samples
+* Package Supply Chain
+  * carvel-package-workflow: FALSE
 
-To deploy the app to a TAP full profile cluster:
+## Config folder
 
-```sh
-export WORKLOAD_NAMESPACE=mydev
-kubectl apply -n $WORKLOAD_NAMESPACE -f tanzu-java-web-app-img-server.mydev.tap/rbac.yaml
-kubectl apply -n $WORKLOAD_NAMESPACE -f tanzu-java-web-app-img-server.mydev.tap/app.yaml
+Configuration of apps created using Package Supply Chain.
 
-```
+### myapp.mydev
 
-Helpful commands: 
+* Workload type: Web
+* Building from source (source to url)
+  * Source: https://github.com/vmware-tanzu/application-accelerator-samples
+* Package Supply Chain
+  * carvel-package-workflow: FALSE
 
-```sh
-export PACKAGE_NAME=$(yq -e '.spec.refName' tanzu-java-web-app-img-server.mydev.tap/packages/20230626183112.0.0.yml)
-export PACKAGE_VERSION=$(yq -e '.spec.version' tanzu-java-web-app-img-server.mydev.tap/packages/20230626183112.0.0.yml)
+### myserverapp.mydev
 
-```
+* Workload type: Server
+* Building from source (source to url)
+  * Source: https://github.com/vmware-tanzu/application-accelerator-samples
+* Package Supply Chain
+  * carvel-package-workflow: FALSE
