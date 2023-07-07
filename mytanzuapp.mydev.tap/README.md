@@ -62,3 +62,18 @@ Verify that:
 - app is running
 - new package version was created in the gitops repo
 - new app deployed and running has the new label
+
+## Create and apply canary resource and httpproxy
+
+```sh
+kubectl apply -n $WORKLOAD_NAMESPACE -f mytanzuapp.mydev.tap/canary/mytanzuapp-canary.yaml
+kubectl get canary/mytanzuapp -n $WORKLOAD_NAMESPACE
+kubectl describe canary/mytanzuapp -n $WORKLOAD_NAMESPACE
+
+kubectl apply -n $WORKLOAD_NAMESPACE -f mytanzuapp.mydev.tap/canary/mytanzuapp-ingress.yaml
+kubectl get httpproxy -n $WORKLOAD_NAMESPACE
+
+curl mytanzuapp.famintos.tanzu.biz
+```
+
+## Modify source code and watch progressive delivery to happen automatically
