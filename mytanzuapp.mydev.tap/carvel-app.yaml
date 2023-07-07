@@ -1,0 +1,20 @@
+---
+apiVersion: kappctrl.k14s.io/v1alpha1
+kind: App
+metadata:
+ name: mycarvelapp-staging
+spec:
+  serviceAccountName: default
+  fetch:
+  - git:
+    url: https://github.com/izabelacg/tap-gitops
+    ref: origin/main
+    subPath: mytanzuapp.mydev.tap/packages/
+  - git:
+    url: https://github.com/izabelacg/tap-gitops
+    ref: origin/main
+    subPath: mytanzuapp.mydev.tap/staging/
+  template:
+  - ytt: {}
+  deploy:
+  - kapp: {}
