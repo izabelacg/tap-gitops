@@ -1,0 +1,19 @@
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: tanzu-java-web-app-ingress
+  namespace: mydev
+spec:
+  virtualhost:
+    fqdn: tanzu-java-web-app.famintos.tanzu.biz
+  includes:
+    - name: tanzu-java-web-app-flagger-service
+      namespace: mydev
+      conditions:
+        - prefix: /
+#  routes:
+#    - conditions:
+#      - prefix: /
+#      services:
+#        - name: tanzu-java-web-app-flagger-service
+#          port: 80
