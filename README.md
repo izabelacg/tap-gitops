@@ -40,3 +40,28 @@ Configuration of apps created using Package Supply Chain.
   * Source: https://github.com/vmware-tanzu/application-accelerator-samples
 * Package Supply Chain
   * carvel-package-workflow: FALSE
+
+Command:
+
+```shell
+# server / source to url
+tanzu apps workload create myserverapp \
+--git-repo https://github.com/vmware-tanzu/application-accelerator-samples \
+--sub-path tanzu-java-web-app \
+--git-branch main \
+--type server \
+--label app.kubernetes.io/part-of=tanzu-java-web-app \
+--namespace $WORKLOAD_NAMESPACE
+```
+
+Reference: https://gitlab.eng.vmware.com/igomes/verbose-couscous
+
+### tanzu-java-web-app.mydev
+
+* Workload type: Server
+* Building from source (source to url)
+  * Source: https://github.com/izabelacg/application-accelerator-samples
+* Package Supply Chain
+  * carvel-package-workflow: FALSE
+
+**Note**: This is the workload used in the canary deployment experiment 1. See [this README.md](canary/README.md).

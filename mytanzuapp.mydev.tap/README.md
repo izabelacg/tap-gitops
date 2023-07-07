@@ -27,12 +27,38 @@ tanzu apps workload create mytanzuapp \
 
 ```
 
+## Deploy the Carvel App
+
+To deploy a Carvel app with the generated package and manually created package install to a TAP full profile cluster:
+
+```sh
+export WORKLOAD_NAMESPACE=mydev
+kubectl apply -n $WORKLOAD_NAMESPACE -f tanzu-java-web-app-img-server.mydev.tap/rbac.yaml
+kubectl apply -n $WORKLOAD_NAMESPACE -f mytanzuapp.mydev.tap/carvel-app.yaml
+
+```
+
+Verify your app is running:
+```sh
+kubectl -n test exec -it deploy/flagger-loadtester bash
+curl http://mytanzuapp.mydev:8080
+#OR
+kubectl port-forward --namespace mydev service/mytanzuapp 8080:8080
+curl http://localhost:8080
+```
+
 ## Modify the workload
 
 ```sh
 
 tanzu apps workload apply mytanzuapp \
---label app.kubernetes.io/part-of=mytanzuapp \
+--label app.kubernetes.io/name=mytanzuapp \
 --namespace $WORKLOAD_NAMESPACE
 
 ```
+
+Verify that:
+
+- app is running
+- new package version was created in the gitops repo
+- new app deployed and running has the new label
