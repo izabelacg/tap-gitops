@@ -27,8 +27,8 @@ kubectl apply -k https://github.com/fluxcd/flagger//kustomize/tester?ref=main
 # https://github.com/fluxcd/flagger/blob/main/kustomize/podinfo/deployment.yaml
 kubectl apply -k https://github.com/fluxcd/flagger//kustomize/podinfo?ref=main
 
-kubectl apply -f flagger/podinfo-canary.yaml
-kubectl apply -f flagger/podinfo-ingress.yaml
+kubectl apply -f canary/podinfo-canary.yaml
+kubectl apply -f canary/podinfo-ingress.yaml
 ```
 
 TAP workload/deployment:
@@ -45,18 +45,18 @@ tanzu apps workload apply tanzu-java-web-app \
 --namespace $WORKLOAD_NAMESPACE
 
 #OR
-kubectl apply -n $WORKLOAD_NAMESPACE -f flagger/workload-tanzu-java-web-app.yaml
+kubectl apply -n $WORKLOAD_NAMESPACE -f canary/workload-tanzu-java-web-app.yaml
 
 tanzu apps workload get tanzu-java-web-app --namespace $WORKLOAD_NAMESPACE
 tanzu apps workload tail tanzu-java-web-app --namespace $WORKLOAD_NAMESPACE --timestamp --since 1h
 
 #http://tanzu-java-web-app.famintos.tanzu.biz/actuator/health
 
-kubectl apply -n $WORKLOAD_NAMESPACE -f flagger/tanzu-java-web-app-canary.yaml
+kubectl apply -n $WORKLOAD_NAMESPACE -f canary/tanzu-java-web-app-canary.yaml
 kubectl get canary/tanzu-java-web-app -n $WORKLOAD_NAMESPACE
 kubectl describe canary/tanzu-java-web-app -n $WORKLOAD_NAMESPACE
 
-kubectl apply -n $WORKLOAD_NAMESPACE -f flagger/tanzu-java-web-app-ingress.yaml
+kubectl apply -n $WORKLOAD_NAMESPACE -f canary/tanzu-java-web-app-ingress.yaml
 kubectl get httpproxy -n $WORKLOAD_NAMESPACE
 ```
 
