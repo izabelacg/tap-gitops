@@ -2,13 +2,14 @@
 
 ## tanzu-java-web-app-img-server.mydev.tap
 
-Go to [README.md](tanzu-java-web-app-img-server.mydev.tap/README.md)
+Go to [README.md](tanzu-java-web-app-img-server.mydev.tap/README.md).
 
 ## Canary deployment
 
-Go to [README.md](canary/README.md)
+Go to [README.md](canary/README.md).
 
-Canary deployment instructions of the workload below:
+Canary deployment instructions of the example described in the guide [Contour Canary Deployments](https://docs.flagger.app/tutorials/contour-progressive-delivery)
+and also, of the workload below:
 
 * Workload type: Server
 * Building from source (source to url)
