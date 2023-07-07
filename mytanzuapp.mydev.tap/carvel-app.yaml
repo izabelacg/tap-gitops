@@ -7,13 +7,13 @@ spec:
   serviceAccountName: default
   fetch:
   - git:
-    url: https://github.com/izabelacg/tap-gitops
-    ref: origin/main
-    subPath: mytanzuapp.mydev.tap/packages/
+      url: https://github.com/izabelacg/tap-gitops
+      ref: origin/main
+      subPath: mytanzuapp.mydev.tap/packages/
   - git:
-    url: https://github.com/izabelacg/tap-gitops
-    ref: origin/main
-    subPath: mytanzuapp.mydev.tap/staging/
+      url: https://github.com/izabelacg/tap-gitops
+      ref: origin/main
+      subPath: mytanzuapp.mydev.tap/staging/
   template:
   - ytt: {}
   deploy:
