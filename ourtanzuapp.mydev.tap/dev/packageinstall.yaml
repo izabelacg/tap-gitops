@@ -11,4 +11,4 @@ spec:
      constraints: ">= 0.0.0-0"
  values:
  - secretRef:
-     name: app-values # Secret created in previous step
+     name: mycarvelapp-ourtanzuapp-values # Secret created in previous step
