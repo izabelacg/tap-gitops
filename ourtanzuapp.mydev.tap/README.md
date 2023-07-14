@@ -34,7 +34,7 @@ To deploy a Carvel app with the generated package and package installs to a TAP 
 ```sh
 export WORKLOAD_NAMESPACE=mydev
 kubectl apply -n $WORKLOAD_NAMESPACE -f tanzu-java-web-app-img-server.mydev.tap/rbac.yaml
-kubectl apply -n $WORKLOAD_NAMESPACE -f ourtanzuapp/carvel-app.yaml
+kubectl apply -n $WORKLOAD_NAMESPACE -f ourtanzuapp.mydev.tap/carvel-app.yaml
 
 ```
 
