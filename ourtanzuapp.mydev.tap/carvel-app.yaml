@@ -1,0 +1,21 @@
+---
+apiVersion: kappctrl.k14s.io/v1alpha1
+kind: App
+metadata:
+ name: mycarvelapp-ourtanzuapp
+spec:
+ serviceAccountName: default
+ fetch:
+ - git:
+     url: https://github.com/izabelacg/tap-gitops
+     ref: origin/main
+     subPath: ourtanzuapp.mydev.tap/packages/
+ - git:
+     url: https://github.com/izabelacg/tap-gitops
+     ref: origin/main
+     subPath: ourtanzuapp.mydev.tap/dev/
+ template:
+ - ytt: {}
+
+ deploy:
+ - kapp: {}
