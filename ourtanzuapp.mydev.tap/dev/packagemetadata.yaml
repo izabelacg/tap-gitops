@@ -1,0 +1,11 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: PackageMetadata
+metadata:
+  name: ourtanzuapp.mydev.tap
+spec:
+  maintainers:
+    - name : "izabelacg"
+  displayName: "Our Tanzu App"
+  longDescription: "Modified version of one of the application accelerators: tanzu-java-web-app"
+  shortDescription: "Modified version of one of the application accelerators"
+  supportDescription: "https://github.com/izabelacg/application-accelerator-samples"
