@@ -60,27 +60,27 @@ spec:
         tanzu.app.live.view.application.name: tanzu-java-web-app
     spec:
       containers:
-      - env:
-        - name: JAVA_TOOL_OPTIONS
-          value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: us.gcr.io/daisy-284300/icg-vmware/build-service/workloads/tanzu-java-web-app-mydev@sha256:84ff260bcfe481e4f8a810863a8b45445a9abd606b742404ca7b714419b348bf
-        livenessProbe:
-          httpGet:
-            path: /livez
-            port: 8080
-            scheme: HTTP
-        name: workload
-        ports:
-        - containerPort: 8080
-          protocol: TCP
-        readinessProbe:
-          httpGet:
-            path: /readyz
-            port: 8080
-            scheme: HTTP
-        resources: {}
-        securityContext:
-          runAsUser: 1000
+        - env:
+            - name: JAVA_TOOL_OPTIONS
+              value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
+          image: northamerica-northeast2-docker.pkg.dev/app-last-mile/icg-artifacts/tap/build-service/workloads/tanzu-java-web-app-mydev@sha256:84ff260bcfe481e4f8a810863a8b45445a9abd606b742404ca7b714419b348bf --- null
+          livenessProbe:
+            httpGet:
+              path: /livez
+              port: 8080
+              scheme: HTTP
+          name: workload
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8080
+              scheme: HTTP
+          resources: {}
+          securityContext:
+            runAsUser: 1000
       serviceAccountName: default
 ---
 apiVersion: v1

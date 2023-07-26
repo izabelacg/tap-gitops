@@ -10,8 +10,8 @@ spec:
   template:
     spec:
       fetch:
-      - imgpkgBundle:
-          image: us.gcr.io/daisy-284300/icg-vmware/build-service/workloads/mytanzuapp-mydev-bundle@sha256:ae8c956b3b5657c1f9e5395ad34926010a90c40f62dc0bd47b497d9fd223da00
+        - imgpkgBundle:
+            image: northamerica-northeast2-docker.pkg.dev/app-last-mile/icg-artifacts/tap/build-service/workloads/mytanzuapp-mydev-bundle@sha256:ae8c956b3b5657c1f9e5395ad34926010a90c40f62dc0bd47b497d9fd223da00
       template:
       - ytt:
           paths:
