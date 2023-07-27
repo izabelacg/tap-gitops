@@ -5,7 +5,7 @@ metadata:
   name: app-package-install-role
 rules:
 - apiGroups: ["data.packaging.carvel.dev"]
-  resources: ["packages"]
+  resources: ["packages","packagemetadatas"]
   verbs: ["get", "list", "create", "update", "delete"]
 - apiGroups: [""]
   resources: ["secrets"]

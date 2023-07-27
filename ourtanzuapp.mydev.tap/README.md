@@ -23,7 +23,6 @@ tanzu apps workload create ourtanzuapp \
 --type server \
 --label apps.tanzu.vmware.com/carvel-package-workflow=true \
 --image us.gcr.io/daisy-284300/icg-vmware/build-service/workloads/mytanzuapp-mydev@sha256:d890d67d2d710423d458658637cab17ba7a2883e40077f0e964b2d0d3bb1289c \
---param "gitops_ssh_secret=git-ssh" \
 --namespace $WORKLOAD_NAMESPACE
 ```
 
@@ -33,9 +32,23 @@ To deploy a Carvel app with the generated package and package installs to a TAP 
 
 ```sh
 export WORKLOAD_NAMESPACE=mydev
+
+kubectl apply -n $WORKLOAD_NAMESPACE -f tanzu-java-web-app-img-server.mydev.tap/gitops-secret.yaml
+
 kubectl apply -n $WORKLOAD_NAMESPACE -f tanzu-java-web-app-img-server.mydev.tap/rbac.yaml
 kubectl apply -n $WORKLOAD_NAMESPACE -f ourtanzuapp.mydev.tap/carvel-app.yaml
 
+```
+
+Testing the workload:
+
+```shell
+kubectl port-forward --namespace $WORKLOAD_NAMESPACE service/ourtanzuapp 8080:8080
+
+export EXTERNAL_ADDRESS=$(kubectl get svc/envoy -n tanzu-system-ingress -ojsonpath="{.status.loadBalancer.ingress[0].ip}")
+echo $EXTERNAL_ADDRESS
+
+curl -H "Host: hello.$WORKLOAD_NAMESPACE.alm.bela.tanzu.biz" $EXTERNAL_ADDRESS
 ```
 
 TAP VALUES file included the below snippets:
