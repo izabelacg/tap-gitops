@@ -1,0 +1,60 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  name: mytanzuapp.mydev.tap.20230802163041.0.0+build.13e7965
+spec:
+  refName: mytanzuapp.mydev.tap
+  version: 20230802163041.0.0+build.13e7965
+  releaseNotes: |
+    Release v20230802163041.0.0+build.13e7965 of package mytanzuapp.mydev.tap
+  template:
+    spec:
+      fetch:
+      - imgpkgBundle:
+          image: northamerica-northeast2-docker.pkg.dev/app-last-mile/icg-artifacts/tap/build-service/workloads/mytanzuapp-mydev-bundle@sha256:9c4f8b3db1b669ecbd7ca4934713cd4c2af98505c583e4fb35c737afba9903d2
+      template:
+      - ytt:
+          paths:
+          - .
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+      deploy:
+      - kapp: {}
+  valuesSchema:
+    openAPIv3:
+      type: object
+      additionalProperties: false
+      properties:
+        workload_name:
+          title: Workload name
+          type: string
+          description: Required. Name of the workload, used by K8s Ingress HTTP rules.
+          default: ""
+        replicas:
+          title: Replicas
+          type: integer
+          description: Number of replicas.
+          default: 1
+        port:
+          title: Port
+          type: integer
+          description: Port number for the backend associated with K8s Ingress.
+          default: 8080
+        hostname:
+          title: Hostname
+          type: string
+          description: If set, K8s Ingress will be created with HTTP rules for hostname.
+          default: ""
+        cluster_issuer:
+          title: Cluster Issuer
+          type: string
+          description: CertManager Issuer to use to generate certificate for K8s Ingress.
+          default: tap-ingress-selfsigned
+        greeting:
+          title: Greeting message
+          type: string
+          description: Greeting message for tanzu-java-web-app.
+          default: all of you in Tanzu
+
